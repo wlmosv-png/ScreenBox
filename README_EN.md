@@ -24,7 +24,7 @@ A local-first Android screenshot organizer that helps you find, understand, orga
 
 ScreenBox lives where your screenshots pile up — the system photo library. It scans your screenshots on-device, reads the text inside them, sorts them by what they actually show, and helps you clean up the ones that have outlived their purpose. Everything runs on your phone. ScreenBox requests no network permission — it cannot upload anything even if you wanted it to.
 
-> **First public release: `0.10.1 (13)` — Preview.** Core flows are verified on a real Android 15 device and covered by 115 unit tests (1 skipped). Android 10–14 are not yet verified on real hardware — see [Compatibility](#compatibility).
+> **Current release: `0.10.1 (13)`.** Core flows are verified on a real Android 15 device and covered by 115 unit tests (1 skipped). Android 10–14 are not yet verified on real hardware — see [Compatibility](#compatibility).
 
 ## The problem
 

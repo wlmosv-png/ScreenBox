@@ -1,12 +1,12 @@
-# ScreenBox 0.10.1 (13) — First Public Preview
+# ScreenBox 0.10.1 (13) — First Public Release
 
 Your screenshots, finally organized.
 
-This is the **first public release** of ScreenBox — a local-first Android screenshot organizer. It is a **Preview**: core flows are verified on Android 15 real hardware and covered by 115 unit tests, but Android 10–14 are not yet verified on real devices (see Compatibility).
+This is the **first public release** of ScreenBox — a local-first Android screenshot organizer. Core flows are verified on Android 15 real hardware and covered by 115 unit tests; Android 10–14 are not yet verified on real devices (see Compatibility).
 
 ## What's New
 
-First public release. This build also fixes a real crash found during release verification: pausing or cancelling OCR while recognitions were still in flight could tear down the ML Kit pipeline mid-run and take the process down (`IllegalStateException: Pipeline did not stop successfully`). The recognizer is now closed only after in-flight work drains, and never while a recognition is running. Re-tested on device: pause, force-stop, and restart — zero crashes.
+This build also fixes a real crash found during release verification: pausing or cancelling OCR while recognitions were still in flight could tear down the ML Kit pipeline mid-run and take the process down (`IllegalStateException: Pipeline did not stop successfully`). The recognizer is now closed only after in-flight work drains, and never while a recognition is running. Re-tested on device: pause, force-stop, and restart — zero crashes.
 
 ## Key Features
 
