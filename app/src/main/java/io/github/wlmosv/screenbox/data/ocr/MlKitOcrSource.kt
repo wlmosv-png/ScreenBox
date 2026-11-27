@@ -6,6 +6,8 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.chinese.ChineseTextRecognizerOptions
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
@@ -59,11 +61,33 @@ class MlKitOcrSource(private val context: Context) {
     /** 统计实际调用次数，便于诊断"是否真的在复用同一个 recognizer"。 */
     private val callCount = AtomicInteger(0)
 
+    /**
+     * 在途识别计数 + 关闭闸门。
+     *
+     * 真机实测崩溃（Android 15，07:56）：
+     *   java.lang.IllegalStateException: Pipeline did not stop successfully.
+     *     at ...TextRecognizerTaskWithResource.release
+     *
+     * 根因：任务暂停/取消时 finally 里直接 recognizer.close()，
+     * 而此时并发通道（CONCURRENCY=3）里仍有 process(image) 在途。
+     * ML Kit 的 pipeline 被从底层拆掉，正在跑的识别回调报错 → 进程崩溃。
+     *
+     * 修复：close() 先关门（closing=true，新调用直接拒绝），
+     * 再等所有在途识别结束，最后才真正 close recognizer。
+     */
+    private val inFlight = AtomicInteger(0)
+    @Volatile private var closing = false
+
     suspend fun recognize(uri: Uri): Result<OcrResult> = withContext(Dispatchers.IO) {
-        runCatching {
-            callCount.incrementAndGet()
-            val image = InputImage.fromFilePath(context, uri)
-            val result = recognizer.process(image).await()
+        if (closing) {
+            return@withContext Result.failure(IllegalStateException("recognizer closing"))
+        }
+        inFlight.incrementAndGet()
+        try {
+            runCatching {
+                callCount.incrementAndGet()
+                val image = InputImage.fromFilePath(context, uri)
+                val result = recognizer.process(image).await()
 
             val blocks = JSONArray()
             val lines = JSONArray()
@@ -110,13 +134,35 @@ class MlKitOcrSource(private val context: Context) {
                 lineBoundsJson = lines.takeIf { it.length() > 0 }?.toString(),
                 isEmpty = sb.isBlank(),
             )
+            }
+        } finally {
+            inFlight.decrementAndGet()
         }
     }
 
     fun processedCount(): Int = callCount.get()
 
-    fun close() {
-        runCatching { recognizer.close() }
+    /**
+     * 安全关闭：先拒绝新调用，再等所有在途识别结束（最多 5 秒），最后才 close。
+     * 不在有在途识别时拆 pipeline，避免 "Pipeline did not stop successfully" 崩溃。
+     *
+     * 用 NonCancellable 包住等待：本方法常在 finally 里、且取消异常在传播中，
+     * 普通 delay 会立刻抛 CancellationException，等不到在途识别收尾。
+     */
+    suspend fun close() {
+        closing = true
+        withContext(NonCancellable) {
+            val deadline = System.currentTimeMillis() + 5_000
+            while (inFlight.get() > 0 && System.currentTimeMillis() < deadline) {
+                delay(50)
+            }
+            if (inFlight.get() > 0) {
+                // 仍有在途：放弃关闭，让 recognizer 继续存活（比崩溃安全）
+                closing = false
+                return@withContext
+            }
+            runCatching { recognizer.close() }
+        }
     }
 
     companion object {

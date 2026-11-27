@@ -53,3 +53,6 @@ R8-FINDINGS.md
 R8-REPORT.md
 R9-REPORT.md
 R10-REPORT.md
+
+# 发布产物与上传辅助脚本（不入库，随 Release 发布）
+release-artifacts/

@@ -289,6 +289,8 @@ class OcrRepository(
             taskDao.setError(KIND, t.message?.take(200), System.currentTimeMillis())
             taskDao.updateStatus(KIND, TaskStatus.FAILED.name, System.currentTimeMillis())
         } finally {
+            // close() 是 suspend：先等在途识别结束再拆 recognizer，
+            // 否则会触发 "Pipeline did not stop successfully" 崩溃（真机实测）。
             ocr.close()
         }
     }

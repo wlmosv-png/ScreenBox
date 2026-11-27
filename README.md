@@ -8,11 +8,11 @@
 
 A local-first Android screenshot organizer that helps you find, understand, organize, and safely clean up your screenshots.
 
-[![Release](https://img.shields.io/badge/release-0.10.0%20(12)-4EA89E?style=flat-square)](https://github.com/wlmosv-png/ScreenBox/releases)
+[![Release](https://img.shields.io/badge/release-0.10.1%20(13)-4EA89E?style=flat-square)](https://github.com/wlmosv-png/ScreenBox/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-4EA89E?style=flat-square)](LICENSE)
 [![Android](https://img.shields.io/badge/android-10%20(API%2029)+-4EA89E?style=flat-square)](docs/BUILDING.md)
 [![CI](https://img.shields.io/badge/CI-GitHub%20Actions-4EA89E?style=flat-square)](.github/workflows/android.yml)
-[![Tests](https://img.shields.io/badge/tests-115%20passing-4EA89E?style=flat-square)](app/src/test)
+[![Tests](https://img.shields.io/badge/tests-115%20tests%20passing-4EA89E?style=flat-square)](app/src/test)
 
 **中文文档：[README.zh-CN.md](README.zh-CN.md)**
 
@@ -22,7 +22,7 @@ A local-first Android screenshot organizer that helps you find, understand, orga
 
 ScreenBox lives in the place your screenshots pile up — the system photo library. It scans your screenshots locally, reads the text inside them, sorts them by what they actually show, and helps you clean up the ones that have outlived their purpose. Everything runs on your device. ScreenBox does not request network access, and it cannot upload anything even if you wanted it to.
 
-> **First public release: `0.10.0 (12)` — Preview.** Core flows are verified on a real Android 15 device and covered by 115 unit tests. Android 10–14 are not yet verified on real hardware — see [Compatibility](#compatibility) for exactly what has and has not been tested.
+> **First public release: `0.10.1 (13)` — Preview.** Core flows are verified on a real Android 15 device and covered by 115 unit tests (1 skipped). Android 10–14 are not yet verified on real hardware — see [Compatibility](#compatibility) for exactly what has and has not been tested.
 
 ## Contents
 
@@ -68,7 +68,7 @@ Every capability below maps to code that is actually implemented and tested in t
 
 ## Screenshots
 
-All screenshots below are from the real `0.10.0 (12)` build running on an Android 15 device.
+All screenshots below are from the real `0.10.1 (13)` build running on an Android 15 device.
 
 <div align="center"><img src="docs/assets/screenshots/01-home.png" width="240" alt="Home"><br><sub>Home — overview of your screenshot library</sub></div>
 
@@ -108,7 +108,7 @@ ScreenBox is built around a simple principle: your screenshots are your data, an
 
 **Download**
 
-Grab the latest stable-preview APK from the [Releases page](https://github.com/wlmosv-png/ScreenBox/releases). This first release ships the APK as `ScreenBox-0.10.0-12.apk.part00`…`.part13` plus a `reassemble.sh` (the maintainer's uplink drops single uploads that large). Run `sh reassemble.sh` in the folder of parts — it reassembles and verifies the SHA-256 below.
+Grab the latest stable-preview APK from the [Releases page](https://github.com/wlmosv-png/ScreenBox/releases). This first release ships the APK as `ScreenBox-0.10.1-13.apk.part00`… plus a `reassemble.sh` (the maintainer's uplink drops single uploads that large). Run `sh reassemble.sh` in the folder of parts — it reassembles and verifies the SHA-256 below.
 
 **Verify the download**
 
@@ -121,7 +121,7 @@ sha256sum -c sha256sum.txt
 **Install**
 
 ```bash
-adb install -r ScreenBox-0.10.0-12.apk
+adb install -r ScreenBox-0.10.1-13.apk
 ```
 
 Or install it directly from the file on your phone. On first launch, grant the photo/media authorization. On Android 14+, you can choose to grant access to all photos or only selected photos.

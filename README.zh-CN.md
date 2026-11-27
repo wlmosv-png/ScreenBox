@@ -8,11 +8,11 @@
 
 一个本地优先的 Android 截图整理工具，帮你找到、理解、整理，并安全地清理截图。
 
-[![Release](https://img.shields.io/badge/release-0.10.0%20(12)-4EA89E?style=flat-square)](https://github.com/wlmosv-png/ScreenBox/releases)
+[![Release](https://img.shields.io/badge/release-0.10.1%20(13)-4EA89E?style=flat-square)](https://github.com/wlmosv-png/ScreenBox/releases)
 [![License](https://img.shields.io/badge/license-Apache--2.0-4EA89E?style=flat-square)](LICENSE)
 [![Android](https://img.shields.io/badge/android-10%20(API%2029)+-4EA89E?style=flat-square)](docs/BUILDING.md)
 [![CI](https://img.shields.io/badge/CI-GitHub%20Actions-4EA89E?style=flat-square)](.github/workflows/android.yml)
-[![Tests](https://img.shields.io/badge/tests-115%20passing-4EA89E?style=flat-square)](app/src/test)
+[![Tests](https://img.shields.io/badge/tests-115%20tests%20passing-4EA89E?style=flat-square)](app/src/test)
 
 **English docs: [README.md](README.md)**
 
@@ -22,7 +22,7 @@
 
 ScreenBox 活在截图堆积的地方——系统相册。它在你的设备上扫描截图，读出里面的文字，按截图实际呈现的内容归类，并帮你清理那些已经失去用途的旧图。所有处理都在本机完成。ScreenBox 不申请网络权限，即使你希望它上传，它也没有这个能力。
 
-> **首个公开版本：`0.10.0 (12)` —— Preview。** 核心流程已在 Android 15 真机上验证，并由 115 项单元测试覆盖。Android 10–14 尚未在真机上验证——[兼容性](#兼容性)一节如实写明了哪些测过、哪些没测。
+> **首个公开版本：`0.10.1 (13)` —— Preview。** 核心流程已在 Android 15 真机上验证，并由 115 项单元测试（1 项跳过）覆盖。Android 10–14 尚未在真机上验证——[兼容性](#兼容性)一节如实写明了哪些测过、哪些没测。
 
 ## 目录
 
@@ -68,7 +68,7 @@ ScreenBox 不制造新的焦虑。它只让这堆图变得可搜、可归类、�
 
 ## 产品截图
 
-以下截图全部来自真实的 `0.10.0 (12)` 构建，运行在一台 Android 15 设备上。
+以下截图全部来自真实的 `0.10.1 (13)` 构建，运行在一台 Android 15 设备上。
 
 <div align="center"><img src="docs/assets/screenshots/01-home.png" width="240" alt="首页"><br><sub>首页——截图库总览</sub></div>
 
@@ -108,7 +108,7 @@ ScreenBox 围绕一个简单的原则构建：截图是你的数据，它不该�
 
 **下载**
 
-从 [Releases 页面](https://github.com/wlmosv-png/ScreenBox/releases) 获取最新的预览版 APK。首个版本以分卷形式发布：`ScreenBox-0.10.0-12.apk.part00`…`.part13` 加一个 `reassemble.sh`（维护者上行链路无法单次上传这么大）。把这些文件放到同一目录，运行 `sh reassemble.sh` —— 它会重组成 APK 并校验下面的 SHA-256。
+从 [Releases 页面](https://github.com/wlmosv-png/ScreenBox/releases) 获取最新的预览版 APK。首个版本以分卷形式发布：`ScreenBox-0.10.1-13.apk.part00`… 加一个 `reassemble.sh`（维护者上行链路无法单次上传这么大）。把这些文件放到同一目录，运行 `sh reassemble.sh` —— 它会重组成 APK 并校验下面的 SHA-256。
 
 **校验下载**
 
@@ -121,7 +121,7 @@ sha256sum -c sha256sum.txt
 **安装**
 
 ```bash
-adb install -r ScreenBox-0.10.0-12.apk
+adb install -r ScreenBox-0.10.1-13.apk
 ```
 
 或在手机上直接从文件安装。首次启动时，请授予照片/媒体授权。在 Android 14+ 上，你可以选择授予全部照片或仅选中照片。
