@@ -1,0 +1,55 @@
+name: Assemble Single Release APK
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Download parts from Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          REPO="${{ github.repository }}"
+          TAG="v0.10.1"
+          mkdir -p /tmp/parts
+          cd /tmp/parts
+
+          echo "Downloading parts from $TAG..."
+          gh release download "$TAG" --repo "$REPO" --pattern "ScreenBox-0.10.1-13.apk.part*"
+          
+          echo "Assembling single APK..."
+          cat ScreenBox-0.10.1-13.apk.part* > ScreenBox-0.10.1-13.apk
+
+          EXPECTED="b9b19d8d71e77f509adffe0a791f796bd55438337e311b8b8ea9b1069d10c564"
+          ACTUAL=$(sha256sum ScreenBox-0.10.1-13.apk | awk '{print $1}')
+          echo "Expected: $EXPECTED"
+          echo "Actual:   $ACTUAL"
+
+          if [ "$ACTUAL" != "$EXPECTED" ]; then
+            echo "::error::Checksum mismatch!"
+            exit 1
+          fi
+
+          echo "Checksum verified! Uploading single APK to Release..."
+          gh release upload "$TAG" ScreenBox-0.10.1-13.apk --repo "$REPO" --clobber
+
+          echo "Updating sha256sum.txt..."
+          echo "b9b19d8d71e77f509adffe0a791f796bd55438337e311b8b8ea9b1069d10c564  ScreenBox-0.10.1-13.apk" > sha256sum.txt
+          gh release upload "$TAG" sha256sum.txt --repo "$REPO" --clobber
+
+          echo "Cleaning up part assets from Release..."
+          # Delete the 13 part assets and reassemble.sh to leave a clean release
+          ASSETS=$(gh api "repos/$REPO/releases/tags/$TAG" --jq '.assets[] | select(.name | test("part|reassemble")) | .id')
+          for aid in $ASSETS; do
+            echo "Deleting asset $aid..."
+            gh api -X DELETE "repos/$REPO/releases/assets/$aid"
+          done
+
+          echo "Done! Single APK is now live on Release $TAG."
