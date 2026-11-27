@@ -30,7 +30,7 @@ ScreenBox 活在截图堆积的地方——系统相册。它在你的设备上�
 - [核心能力](#核心能力)
 - [真实产品截图](#真实产品截图)
 - [隐私与安全](#隐私与安全)
-- [安装与分卷说明](#安装与分卷说明)
+- [安装说明](#安装说明)
 - [兼容性](#兼容性)
 - [项目文档](#项目文档)
 - [构建与测试](#构建与测试)
@@ -95,7 +95,7 @@ ScreenBox 围绕一个简单的原则构建：截图是你的数据，它不该�
 
 **关于 OCR 模型。** ScreenBox 使用 Google ML Kit 的本地中文文字识别。模型随 APK 打包，在本机运行——运行时不会下载，而且由于应用没有网络权限，它也无法上传识别结果。ML Kit 自带的 Firebase 统计已在启动时通过反射关闭。
 
-## 安装与分卷说明
+## 安装说明
 
 **要求**
 
@@ -103,17 +103,22 @@ ScreenBox 围绕一个简单的原则构建：截图是你的数据，它不该�
 - 不需要 Root。
 - 照片/媒体授权。
 
-**下载说明**
+**下载**
 
-由于维护者上行链路限制，单次上传大于 ~30 MB 的文件容易超时，首个版本以分卷形式发布：
-1. 前往 [Releases 页面](https://github.com/wlmosv-png/ScreenBox/releases) 下载所有 `ScreenBox-0.10.1-13.apk.part*` 分卷、`reassemble.sh` 以及 `sha256sum.txt`。
-2. 将所有文件放在同一个文件夹中，运行重组脚本：
+前往 [Releases 页面](https://github.com/wlmosv-png/ScreenBox/releases) 下载单个 APK 文件：
 
-   ```bash
-   sh reassemble.sh
-   ```
+```bash
+curl -L -o ScreenBox-0.10.1-13.apk \
+  https://github.com/wlmosv-png/ScreenBox/releases/download/v0.10.1/ScreenBox-0.10.1-13.apk
+```
 
-   脚本会自动合并分卷并校验 SHA-256（`b9b19d8d71e77f509adffe0a791f796bd55438337e311b8b8ea9b1069d10c564`）。
+下载后校验 SHA-256，与 `sha256sum.txt` 一致后再安装：
+
+```bash
+sha256sum -c sha256sum.txt
+```
+
+期望值：`b9b19d8d71e77f509adffe0a791f796bd55438337e311b8b8ea9b1069d10c564`。
 
 **安装**
 

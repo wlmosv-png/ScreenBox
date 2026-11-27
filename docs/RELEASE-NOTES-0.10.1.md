@@ -36,15 +36,7 @@ Minimum: Android 10 (API 29). No root required.
 
 ## Installation
 
-> **Heads up — the APK ships as parts.** The maintainer's uplink drops single uploads larger than ~30 MiB, so the 103 MB APK is split into `ScreenBox-0.10.1-13.apk.part00` … plus a `reassemble.sh`. These are plain byte-splits of the original APK; reassembled they are byte-identical (same SHA-256). Download **all parts + `reassemble.sh` + `sha256sum.txt`**, put them in one folder, then:
-
-   ```bash
-   sh reassemble.sh          # cat parts -> APK, then verify SHA-256
-   ```
-
-   `reassemble.sh` prints the SHA-256 and checks it against the expected value below.
-
-3. Install:
+Download the **single APK** from the [Releases page](https://github.com/wlmosv-png/ScreenBox/releases), verify its SHA-256 against the value in the [Checksums](#checksums) section below, then install:
 
    ```bash
    adb install -r ScreenBox-0.10.1-13.apk
