@@ -36,12 +36,13 @@ Minimum: Android 10 (API 29). No root required.
 
 ## Installation
 
-1. Download `ScreenBox-0.10.0-12.apk` below.
-2. Verify the SHA-256 against `sha256sum.txt`:
+> **Heads up — the APK ships as 14 parts.** The maintainer's uplink drops single uploads larger than ~30 MiB, so the 105 MB APK is split into `ScreenBox-0.10.0-12.apk.part00` … `.part13`. These are plain byte-splits of the original APK; reassembled they are byte-identical (same SHA-256). Download **all 14 parts + `reassemble.sh` + `sha256sum.txt`**, put them in one folder, then:
 
    ```bash
-   sha256sum -c sha256sum.txt
+   sh reassemble.sh          # cat parts -> APK, then verify SHA-256
    ```
+
+   `reassemble.sh` prints the SHA-256 and checks it equals `5f8fb60c…ae462140`. A single-file APK asset will be attached once the upload path allows.
 
 3. Install:
 

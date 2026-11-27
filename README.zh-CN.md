@@ -108,7 +108,7 @@ ScreenBox 围绕一个简单的原则构建：截图是你的数据，它不该�
 
 **下载**
 
-从 [Releases 页面](https://github.com/wlmosv-png/ScreenBox/releases) 获取最新的预览版 APK。
+从 [Releases 页面](https://github.com/wlmosv-png/ScreenBox/releases) 获取最新的预览版 APK。首个版本以分卷形式发布：`ScreenBox-0.10.0-12.apk.part00`…`.part13` 加一个 `reassemble.sh`（维护者上行链路无法单次上传这么大）。把这些文件放到同一目录，运行 `sh reassemble.sh` —— 它会重组成 APK 并校验下面的 SHA-256。
 
 **校验下载**
 

