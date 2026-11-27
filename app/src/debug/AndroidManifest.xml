@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <activity
+            android:name=".bench.BenchActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ScreenBox" />
+        <activity
+            android:name=".bench.OcrConcurrencyBench"
+            android:exported="true"
+            android:theme="@style/Theme.ScreenBox" />
+        <activity
+            android:name=".bench.BenchTrigger"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <receiver android:name=".bench.BenchReceiver" android:exported="true">
+            <intent-filter><action android:name="io.github.wlmosv.screenbox.BENCH_OCR" /></intent-filter>
+        </receiver>
+        <receiver android:name=".bench.FpReceiver" android:exported="true">
+            <intent-filter><action android:name="io.github.wlmosv.screenbox.BENCH_FP" /></intent-filter>
+        </receiver>
+        <receiver android:name=".bench.ScanReceiver" android:exported="true">
+            <intent-filter><action android:name="io.github.wlmosv.screenbox.BENCH_SCAN" /></intent-filter>
+        </receiver>
+        <receiver android:name=".bench.ReclassifyReceiver" android:exported="true">
+            <intent-filter><action android:name="io.github.wlmosv.screenbox.RECLASSIFY" /></intent-filter>
+        </receiver>
+        <receiver android:name=".bench.SafetyCheckReceiver" android:exported="true">
+            <intent-filter><action android:name="io.github.wlmosv.screenbox.SAFETY_CHECK" /></intent-filter>
+        </receiver>
+        <receiver android:name=".bench.TestSetupReceiver" android:exported="true">
+            <intent-filter><action android:name="io.github.wlmosv.screenbox.TEST_SETUP" /></intent-filter>
+        </receiver>
+        <receiver android:name=".bench.SearchTestReceiver" android:exported="true">
+            <intent-filter><action android:name="io.github.wlmosv.screenbox.SEARCH_TEST" /></intent-filter>
+        </receiver>
+        <receiver android:name=".bench.AnalysisReceiver" android:exported="true">
+            <intent-filter><action android:name="io.github.wlmosv.screenbox.RUN_ANALYSIS" /></intent-filter>
+        </receiver>
+        <receiver android:name=".bench.DbProbeReceiver" android:exported="true">
+            <intent-filter><action android:name="io.github.wlmosv.screenbox.DB_PROBE" /></intent-filter>
+        </receiver>
+        <receiver android:name=".bench.LineBackfillReceiver" android:exported="true">
+            <intent-filter><action android:name="io.github.wlmosv.screenbox.BACKFILL_LINES" /></intent-filter>
+        </receiver>
+    </application>
+</manifest>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group>
+        <clip-path android:pathData="M46.00,25.00 H62.00 A11.00,11.00 0 0 1 73.00,36.00 V72.00 A11.00,11.00 0 0 1 62.00,83.00 H46.00 A11.00,11.00 0 0 1 35.00,72.00 V36.00 A11.00,11.00 0 0 1 46.00,25.00 Z" />
+        <path android:pathData="M0,0 L108,0 L108,108 L0,108 Z M47.50,25.00 H60.50 A2.50,2.50 0 0 1 63.00,27.50 V27.50 A2.50,2.50 0 0 1 60.50,30.00 H47.50 A2.50,2.50 0 0 1 45.00,27.50 V27.50 A2.50,2.50 0 0 1 47.50,25.00 Z">
+            <aapt:attr name="android:fillColor">
+                <gradient android:type="linear"
+                    android:startX="54" android:startY="25"
+                    android:endX="54" android:endY="83"
+                    android:startColor="#FFFFFF"
+                    android:endColor="#EEF4F3" />
+            </aapt:attr>
+        </path>
+    </group>
+    <!-- 命中行：被识别的那一行文字 -->
+    <path android:fillColor="#F5B846"
+        android:pathData="M42.60,43.00 H65.40 A1.60,1.60 0 0 1 67.00,44.60 V47.40 A1.60,1.60 0 0 1 65.40,49.00 H42.60 A1.60,1.60 0 0 1 41.00,47.40 V44.60 A1.60,1.60 0 0 1 42.60,43.00 Z" />
+    <!-- 其余文字行：左对齐、长度递减 —— 这是文字行的本质特征，
+         居中且等长会被读成按钮。 -->
+    <path android:fillColor="#B0C8C5"
+        android:pathData="M42.60,54.00 H57.40 A1.60,1.60 0 0 1 59.00,55.60 V58.40 A1.60,1.60 0 0 1 57.40,60.00 H42.60 A1.60,1.60 0 0 1 41.00,58.40 V55.60 A1.60,1.60 0 0 1 42.60,54.00 Z" />
+    <path android:fillColor="#B0C8C5"
+        android:pathData="M42.60,65.00 H49.40 A1.60,1.60 0 0 1 51.00,66.60 V69.40 A1.60,1.60 0 0 1 49.40,71.00 H42.60 A1.60,1.60 0 0 1 41.00,69.40 V66.60 A1.60,1.60 0 0 1 42.60,65.00 Z" />
+</vector>

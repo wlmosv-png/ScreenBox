@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 兼容性 / 使用问题
+    url: https://github.com/wlmosv-png/ScreenBox/discussions
+    about: 能不能跑、卡在哪一步、怎么用 —— 这类问题放 Discussions 更快

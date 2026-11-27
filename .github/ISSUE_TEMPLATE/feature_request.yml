@@ -1,0 +1,38 @@
+name: 功能建议
+description: 希望 ScreenBox 能做到或做得更好的事
+labels: [enhancement]
+body:
+  - type: input
+    id: ver
+    attributes:
+      label: ScreenBox 版本
+      placeholder: 设置页 → 关于 里显示的版本号
+    validations:
+      required: true
+  - type: textarea
+    id: need
+    attributes:
+      label: 你想要什么
+      description: 先说你遇到的场景和痛点，再说想要的方案。
+      placeholder: 场景：… 痛点：… 希望：…
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: 你的实现设想（可选）
+    validations:
+      required: false
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: 涉及范围
+      options:
+        - label: 扫描 / 识别
+        - label: 搜索 / 筛选
+        - label: 分类 / 来源
+        - label: 清理 / 删除
+        - label: 界面 / 交互
+        - label: 性能 / 兼容性
+    validations:
+      required: false

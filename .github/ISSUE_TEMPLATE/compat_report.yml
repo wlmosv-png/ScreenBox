@@ -1,0 +1,49 @@
+name: 兼容性上报
+description: 说一下你的机能不能跑、跑得怎么样（成功也算）
+labels: [compat]
+body:
+  - type: input
+    id: dev
+    attributes:
+      label: 机型 / ROM / Android 版本
+      placeholder: 小米 13 / HyperOS / Android 14
+    validations:
+      required: true
+  - type: input
+    id: storage
+    attributes:
+      label: 截图数量与授权方式
+      placeholder: 约 3000 张截图，全部照片授权
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: 结果
+      options:
+        - 完全可用
+        - 部分可用
+        - 用不了
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: 具体现象
+      description: 哪一步正常、哪一步失败、报什么。成功也请写清验证过哪些流程。
+    validations:
+      required: true
+  - type: checkboxes
+    id: flows
+    attributes:
+      label: 已验证的流程
+      options:
+        - label: 首次扫描
+        - label: 权限申请
+        - label: OCR / 搜索
+        - label: 分类 / 来源
+        - label: 清理工作台
+        - label: 删除授权
+        - label: 后台任务
+    validations:
+      required: false

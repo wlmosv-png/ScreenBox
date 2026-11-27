@@ -1,0 +1,56 @@
+name: Bug 报告
+description: 行为不符合预期，先确认是 bug 再提
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        贴日志或截图前，请先把截图里可能出现的订单号、金额、聊天内容等敏感信息打码。
+  - type: input
+    id: ver
+    attributes:
+      label: ScreenBox 版本
+      placeholder: 设置页 → 关于 里显示的版本号，例如 0.10.0 (12)
+    validations:
+      required: true
+  - type: input
+    id: dev
+    attributes:
+      label: 机型 / ROM / Android 版本
+      placeholder: 一加 PJX110 / ColorOS 15 / Android 15
+    validations:
+      required: true
+  - type: dropdown
+    id: perm
+    attributes:
+      label: 照片授权方式
+      options:
+        - 全部照片
+        - 部分照片（Android 14+）
+        - 仅本机截图目录
+        - 拒绝授权
+        - 不确定
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: 1. 打开首页… 2. 点搜索… 3. …
+    validations:
+      required: true
+  - type: textarea
+    id: expect
+    attributes:
+      label: 期望 / 实际
+      placeholder: 期望：… 实际：…
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: 日志片段
+      description: 设置页 → 导出日志。请打码截图里的敏感信息。
+      render: text
+    validations:
+      required: false

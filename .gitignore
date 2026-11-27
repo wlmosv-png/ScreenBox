@@ -1,0 +1,55 @@
+# 构建产物（不入库）
+build/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+out/
+stage/
+flat/
+classes/
+
+# Gradle / IDE
+.gradle/
+.kotlin/
+.idea/
+*.iml
+local.properties
+
+# 签名材料与密钥（绝不入库）
+*.jks
+*.keystore
+*.p12
+signing.properties
+signing.env
+signing.env.local
+local.env
+.env
+*.local
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.patches/
+*.swp
+*~
+
+# 本地测试与隐私数据（真实截图库、数据库导出、临时评测产物）
+.r5/
+.r9/
+.r10/
+*.db
+*.db-wal
+*.db-shm
+captures/
+verify/
+
+# 内部交付报告（不公开）
+R5-REPORT.md
+R6-AUDIT.md
+R7-REPORT.md
+R8-FINDINGS.md
+R8-REPORT.md
+R9-REPORT.md
+R10-REPORT.md
